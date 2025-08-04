@@ -92,8 +92,6 @@ flutter install
 
 ### Android Widget
 
-*** NOT YET IMPLEMENTED ***
-
 **After installing the main app:**
 
 1. **Long press** on your home screen

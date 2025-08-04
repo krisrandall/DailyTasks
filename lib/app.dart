@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'services/task_service.dart';
 import 'services/media_service.dart';
 import 'services/platform_service.dart';
+import 'services/widget_service.dart';
 import 'platforms/mobile/mobile_layout.dart';
 import 'platforms/tv/tv_layout.dart';
 import 'platforms/widget/desktop_widget.dart';
@@ -21,7 +22,14 @@ class DailyTasksApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => TaskService()),
+        ChangeNotifierProvider(
+          create: (_) {
+            final taskService = TaskService();
+            // Initialize the task service asynchronously
+            taskService.initialize();
+            return taskService;
+          },
+        ),
         ChangeNotifierProvider(create: (_) => MediaService()),
       ],
       child: MaterialApp(
@@ -243,6 +251,14 @@ class DailyTasksApp extends StatelessWidget {
     // Validate configuration
     if (!AppConfig.isValidConfiguration()) {
       throw Exception('Invalid app configuration');
+    }
+
+    // Initialize widget service
+    try {
+      await WidgetService.initialize();
+      WidgetService.registerCallback();
+    } catch (e) {
+      print('Widget service not available: $e');
     }
 
     // Request permissions if needed

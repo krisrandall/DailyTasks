@@ -23,6 +23,9 @@ dependencies:
   video_player: ^2.8.1
   audioplayers: ^6.1.0
 
+  # Widget support - using newer compatible version
+  home_widget: ^0.6.0
+
   # UI and icons
   cupertino_icons: ^1.0.6
 

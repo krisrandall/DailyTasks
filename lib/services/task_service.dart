@@ -6,6 +6,7 @@ import '../models/daily_task.dart';
 import '../models/task_enums.dart';
 import '../utils/constants.dart';
 import '../utils/date_utils.dart' as date_utils;
+import 'widget_service.dart';
 
 class TaskService extends ChangeNotifier {
   List<DailyTask> _tasks = [];
@@ -81,6 +82,9 @@ class TaskService extends ChangeNotifier {
       
       await file.writeAsString(json.encode(jsonData));
       _lastMidnightCheck = DateTime.now();
+      
+      // Update widget whenever tasks are saved
+      await _updateWidget();
     } catch (e) {
       print('Error saving tasks: $e');
     }
@@ -247,5 +251,19 @@ class TaskService extends ChangeNotifier {
       print('Error importing tasks: $e');
       return false;
     }
+  }
+
+  /// Update widget with current task data
+  Future<void> _updateWidget() async {
+    try {
+      await WidgetService.updateWidget(this);
+    } catch (e) {
+      print('Error updating widget: $e');
+    }
+  }
+
+  /// Force widget update
+  Future<void> updateWidget() async {
+    await _updateWidget();
   }
 }

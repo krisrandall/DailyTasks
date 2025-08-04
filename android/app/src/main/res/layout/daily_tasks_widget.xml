@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Daily Tasks"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/progress_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0/0"
+            android:textColor="#B3FFFFFF"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginBottom="12dp"
+        android:max="100"
+        android:progress="0"
+        android:progressTint="#4CAF50"
+        android:progressBackgroundTint="#33FFFFFF" />
+
+    <!-- Task List -->
+    <LinearLayout
+        android:id="@+id/task_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Task items will be added dynamically -->
+        <TextView
+            android:id="@+id/task_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Loading tasks..."
+            android:textColor="#E0E0E0"
+            android:textSize="12sp"
+            android:layout_marginBottom="2dp" />
+
+        <TextView
+            android:id="@+id/task_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#E0E0E0"
+            android:textSize="12sp"
+            android:layout_marginBottom="2dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/task_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#E0E0E0"
+            android:textSize="12sp"
+            android:layout_marginBottom="2dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/task_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#E0E0E0"
+            android:textSize="12sp"
+            android:layout_marginBottom="2dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/task_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#E0E0E0"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- Tap to Open -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tap to open app"
+        android:textColor="#80FFFFFF"
+        android:textSize="10sp"
+        android:gravity="center"
+        android:layout_marginTop="4dp" />
+
+</LinearLayout>
